@@ -135,6 +135,10 @@ Java_jdk_internal_loader_NativeLibraries_load
     if (cname == 0)
         return JNI_FALSE;
     handle = isBuiltin ? procHandle : JVM_LoadLibrary(cname, throwExceptionIfFail);
+
+    if ((NULL != handle) && isJNI) {
+    	handle = JVM_ValidateJNILibrary(cname, handle);
+    }
     if (isJNI) {
         if (handle) {
             JNI_OnLoad_t JNI_OnLoad;

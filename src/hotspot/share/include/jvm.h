@@ -153,6 +153,9 @@ JVM_IsUseContainerSupport(void);
 JNIEXPORT void * JNICALL
 JVM_LoadLibrary(const char *name, jboolean throwException);
 
+JNIEXPORT void * JNICALL
+JVM_ValidateJNILibrary(const char *name, const void *handle);
+
 JNIEXPORT void JNICALL
 JVM_UnloadLibrary(void * handle);
 
