@@ -120,6 +120,7 @@ public class TestVersionedStream {
                         if (Files.isDirectory(p)) {
                             FileUtils.deleteFileTreeWithRetry(p);
                         } else {
+                        	System.out.println("Deleting: " + p " + " -> " + p.getFileName());
                             FileUtils.deleteFileIfExistsWithRetry(p);
                         }
                     } catch (IOException x) {
