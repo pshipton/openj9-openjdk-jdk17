@@ -114,13 +114,13 @@ public class TestVersionedStream {
     @AfterClass
     public void close() throws IOException {
         Files.walk(userdir, 1)
-                .filter(p -> !p.equals(userdir) && !p.getFileName().startsWith("verbosegc"))
+                .filter(p -> !p.equals(userdir) && !p.getFileName().toString().startsWith("verbosegc"))
                 .forEach(p -> {
                     try {
                         if (Files.isDirectory(p)) {
                             FileUtils.deleteFileTreeWithRetry(p);
                         } else {
-                        	System.out.println("Deleting: " + p " + " -> " + p.getFileName());
+                        	System.out.println("Deleting: " + p + " + " -> " + p.getFileName());
                             FileUtils.deleteFileIfExistsWithRetry(p);
                         }
                     } catch (IOException x) {
