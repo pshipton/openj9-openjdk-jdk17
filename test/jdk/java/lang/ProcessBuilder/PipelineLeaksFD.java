@@ -91,6 +91,7 @@ public class PipelineLeaksFD {
         }
 
         processes.forEach(p -> waitForQuiet(p));
+        try {Thread.sleep(5000);} (catch InterruptedException e) {}
 
         Set<PipeRecord> pipesAfter = myPipes();
         if (!pipesBefore.equals(pipesAfter)) {
