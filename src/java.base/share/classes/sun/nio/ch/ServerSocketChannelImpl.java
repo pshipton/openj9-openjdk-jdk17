@@ -23,12 +23,6 @@
  * questions.
  */
 
-/*
- * ===========================================================================
- * (c) Copyright IBM Corp. 2024, 2024 All Rights Reserved
- * ===========================================================================
- */
-
 package sun.nio.ch;
 
 import java.io.FileDescriptor;
@@ -63,7 +57,6 @@ import static java.net.StandardProtocolFamily.UNIX;
 
 import sun.net.NetHooks;
 import sun.net.ext.ExtendedSocketOptions;
-import sun.net.util.AIX;
 
 /**
  * An implementation of ServerSocketChannels
@@ -590,11 +583,8 @@ class ServerSocketChannelImpl
             if (!tryClose()) {
                 long th = thread;
                 if (th != 0) {
-                    if (!AIX.isAIX)
-                        nd.preClose(fd);
+                    nd.preClose(fd);
                     NativeThread.signal(th);
-                    if (AIX.isAIX)
-                        nd.preClose(fd);
                 }
             }
         }
