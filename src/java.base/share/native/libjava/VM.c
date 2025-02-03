@@ -36,12 +36,12 @@
 
 #include "jdk_internal_misc_VM.h"
 
-#if defined(WIN32)
+#if defined(WIN32) || defined(AIX)
 #include "j9access.h"
 /* tracehelp.c defines getTraceInterfaceFromVM(), used by J9_UTINTERFACE_FROM_VM(). */
 #include "tracehelp.c"
 #include "ut_jcl_java.c"
-#endif /* defined(WIN32) */
+#endif /* defined(WIN32) || defined(AIX) */
 
 /* Only register the performance-critical methods */
 static JNINativeMethod methods[] = {
@@ -55,10 +55,10 @@ Java_jdk_internal_misc_VM_latestUserDefinedLoader0(JNIEnv *env, jclass cls) {
 
 JNIEXPORT void JNICALL
 Java_jdk_internal_misc_VM_initialize(JNIEnv *env, jclass cls) {
-#if defined(WIN32)
+#if defined(WIN32) || defined(AIX)
     /* Other platforms do this in check_version.c JNI_OnLoad. */
     UT_JCL_JAVA_MODULE_LOADED(J9_UTINTERFACE_FROM_VM(((J9VMThread *) env)->javaVM));
-#endif /* defined(WIN32) */
+#endif /* defined(WIN32) || defined(AIX) */
 
     // Registers implementations of native methods described in methods[]
     // above.
