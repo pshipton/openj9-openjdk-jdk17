@@ -157,7 +157,7 @@ endif
 
 $(eval $(call SetupJdkLibrary, BUILD_LIBZIP, \
     NAME := zip, \
-    OPTIMIZATION := LOW, \
+    OPTIMIZATION := HIGH, \
     EXCLUDES := $(LIBZIP_EXCLUDES), \
     CFLAGS := $(CFLAGS_JDKLIB) \
         $(LIBZ_CFLAGS), \
