@@ -228,6 +228,11 @@ AC_DEFUN_ONCE([LIB_SETUP_ZLIB],
     if test "x$OPENJDK_TARGET_OS" = xmacosx; then
         LIBZ_CFLAGS="$LIBZ_CFLAGS -DHAVE_UNISTD_H"
     fi
+    if test "x$OPENJDK_TARGET_OS" = xlinux; then
+        if test "x$OPENJDK_TARGET_CPU" = xx86_64; then
+            LIBZ_CFLAGS="$LIBZ_CFLAGS -mtune=corei7-avx"
+        fi
+    fi
   else
     LIBZ_LIBS="-lz"
   fi
