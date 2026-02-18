@@ -230,7 +230,7 @@ AC_DEFUN_ONCE([LIB_SETUP_ZLIB],
     fi
     if test "x$OPENJDK_TARGET_OS" = xlinux; then
         if test "x$OPENJDK_TARGET_CPU" = xx86_64; then
-            LIBZ_CFLAGS="$LIBZ_CFLAGS -march=pentium4"
+            LIBZ_CFLAGS="$LIBZ_CFLAGS -msse2"
         fi
     fi
   else
